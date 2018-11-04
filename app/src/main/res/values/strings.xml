@@ -3,4 +3,6 @@
     <string name="kies_account">Kies je account</string>
     <string name="start">Start</string>
     <string name="resultaten">Resultaten</string>
+    <string name="fronting">Fronting</string>
+    <string name="stopping">Stopping</string>
 </resources>
