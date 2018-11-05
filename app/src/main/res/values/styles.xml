@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/blauw</item>
         <item name="colorPrimaryDark">@color/blauw</item>
         <item name="android:textColor">@color/zwart</item>
+        <item name="android:colorBackground">@color/wit</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
