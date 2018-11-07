@@ -3,17 +3,24 @@ package be.thomasmore.flinkspreken;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.List;
+
 public class StartActivity extends AppCompatActivity {
+
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        db = new DatabaseHelper(this);
     }
 
     public void onClickButtonStart(View v) {
@@ -22,7 +29,8 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void onClickButtonResultaten(View v) {
-        //nog doen
+//         Account id nog te pakken krijgen
+//        List<Score> scores =  db.getScores(accountId);
     }
 
     //Back button
@@ -36,6 +44,7 @@ public class StartActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
