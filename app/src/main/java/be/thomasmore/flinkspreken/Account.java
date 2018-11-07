@@ -27,4 +27,9 @@ public class Account {
     public void setNaam(String naam) {
         this.naam = naam;
     }
+
+    @Override
+    public String toString() {
+        return naam.substring(0,1).toUpperCase() + naam.substring(1).toLowerCase();
+    }
 }

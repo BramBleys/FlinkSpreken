@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".StartActivity" />
-        <activity android:name=".FrontStopActivity"></activity>
+        <activity android:name=".FrontStopActivity" />
+        <activity android:name=".NewAccount"></activity>
     </application>
 
 </manifest>

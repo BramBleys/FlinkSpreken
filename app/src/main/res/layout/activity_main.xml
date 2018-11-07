@@ -9,10 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -29,15 +26,23 @@
             android:text="@string/kies_account"
             android:textSize="40dp" />
 
-        <Button
-            android:id="@+id/account1"
+        <ListView
+            android:id="@+id/accounts"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:dividerHeight="1dp"
+            android:layout_below="@id/account_text"/>
+
+        <TextView
+            android:id="@+id/newAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_account"
+            android:textSize="15sp"
+            android:layout_below="@id/accounts"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:onClick="onClickAccount"
-            android:text="Account 1"
-            android:textSize="20sp" />
+            android:textColor="@color/blauw"
+            android:onClick="onClickNewAccount"/>
 
 
     </RelativeLayout>

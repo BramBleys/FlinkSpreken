@@ -47,6 +47,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS accounts");
+        db.execSQL("DROP TABLE IF EXISTS paren");
+        db.execSQL("DROP TABLE IF EXISTS scores");
 
         onCreate(db);
     }
@@ -147,5 +149,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return lijst;
+    }
+
+    public List<Account> getAccounts() {
+        List<Account> lijst = new ArrayList<Account>();
+
+        String selectQuery = "SELECT  * FROM accounts ORDER BY id";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Account account = new Account(cursor.getLong(0), cursor.getString(1));
+                lijst.add(account);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return lijst;
+    }
+
+    public long addAccount(Account account) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("naam", account.getNaam());
+
+        long id = db.insert("accounts", null, values);
+
+        db.close();
+        return id;
+    }
+
+    public boolean deleteAccount(long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int numrows = db.delete(
+                "accounts",
+                "id = ?",
+                new String[]{String.valueOf(id)});
+
+        db.close();
+        return numrows > 0;
     }
 }

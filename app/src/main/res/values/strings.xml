@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">Flink Spreken</string>
+
     <string name="kies_account">Kies je account</string>
+    <string name="new_account">Nieuw account</string>
+
+    <string name="naam_account">Naam:</string>
+    <string name="add_account">Opslaan</string>
+
     <string name="start">Start</string>
     <string name="resultaten">Resultaten</string>
+
     <string name="fronting">Fronting</string>
     <string name="stopping">Stopping</string>
 </resources>
