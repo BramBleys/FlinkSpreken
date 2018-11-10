@@ -39,12 +39,6 @@
                 android:onClick="onClickButtonAdd"
                 android:text="@string/add_account" />
 
-            <Button
-                android:id="@+id/buttonTerug"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:onClick="onClickButtonTerug"
-                android:text="@string/terug" />
         </LinearLayout>
 
 

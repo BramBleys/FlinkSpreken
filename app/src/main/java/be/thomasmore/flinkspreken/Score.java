@@ -1,6 +1,8 @@
 package be.thomasmore.flinkspreken;
 
-public class Score {
+import java.io.Serializable;
+
+public class Score implements Serializable{
     private long id;
     private long score;
     private long accountId;
