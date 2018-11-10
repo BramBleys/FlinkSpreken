@@ -171,6 +171,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lijst;
     }
 
+    public Account getAccount(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                "accounts",
+                new String[]{"id", "naam"},
+                "id = ?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null,
+                null);
+
+        Account account = new Account();
+
+        if (cursor.moveToFirst()) {
+            account = new Account(cursor.getLong(0), cursor.getString(1));
+        }
+
+        cursor.close();
+        db.close();
+        return account;
+    }
+
     public long addAccount(Account account) {
         SQLiteDatabase db = this.getWritableDatabase();
 
