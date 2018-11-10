@@ -30,19 +30,21 @@
             android:id="@+id/accounts"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/account_text"
             android:dividerHeight="1dp"
-            android:layout_below="@id/account_text"/>
+            android:layout_marginTop="30dp"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/newAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/new_account"
-            android:textSize="15sp"
             android:layout_below="@id/accounts"
             android:layout_centerHorizontal="true"
+            android:onClick="onClickNewAccount"
+            android:text="@string/new_account"
             android:textColor="@color/blauw"
-            android:onClick="onClickNewAccount"/>
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
