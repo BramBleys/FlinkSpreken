@@ -14,7 +14,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private DatabaseHelper db;
     private List<Account> accounts;
@@ -51,8 +51,9 @@ public class MainActivity extends AppCompatActivity{
         listViewAccounts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parentView, View childView, int position, long id) {
-
-                Log.i("click", accounts.get(position).getNaam());
+                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                intent.putExtra("gebruiker", accounts.get(position).getId());
+                startActivity(intent);
             }
         });
 
