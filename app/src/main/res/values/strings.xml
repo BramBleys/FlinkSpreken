@@ -13,4 +13,14 @@
 
     <string name="fronting">Fronting</string>
     <string name="stopping">Stopping</string>
+
+    <string name="info_text_fronting">Het kind spreekt een klank, die vanachter in de mond uitgesproken moet worden (bv: /k/), vooraan in de mond uit (bv: /t/).
+        Bv: toe i.p.v. koe
+    </string>
+    <string name="info_text_stopping">Het kind ‘stopt’ een klank die je normaal gezien lang moet aanhouden (bv: /s/).
+        Bv: kat i.p.v. gat
+    </string>
+    <string name="info_popup_title">Info</string>
+    <string name="info_popup_button">OK</string>
+
 </resources>
