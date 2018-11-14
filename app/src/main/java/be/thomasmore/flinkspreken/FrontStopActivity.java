@@ -1,11 +1,10 @@
 package be.thomasmore.flinkspreken;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +20,19 @@ public class FrontStopActivity extends AppCompatActivity {
     }
 
     public void onClickButtonInfo(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        final View viewInflater = inflater.inflate(R.layout.info_popup, null);
+        builder.setTitle(R.string.info_popup_title)
+                .setIcon(R.drawable.info_icon)
+                .setView(viewInflater)
+                .setPositiveButton(R.string.info_popup_button, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     public void onClickButtonFronting(View v) {
