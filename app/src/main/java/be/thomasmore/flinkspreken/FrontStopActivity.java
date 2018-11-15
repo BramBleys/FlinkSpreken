@@ -1,6 +1,7 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -79,11 +80,21 @@ public class FrontStopActivity extends AppCompatActivity {
     }
 
     public void onClickButtonFronting(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("frontstop", "fronting");
 
+        Intent intent = new Intent(getApplicationContext(), FinaalInitiaalActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     public void onClickButtonStopping(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("frontstop", "stopping");
 
+        Intent intent = new Intent(getApplicationContext(), FinaalInitiaalActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     //Back button
