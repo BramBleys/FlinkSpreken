@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.thomasmore.flinkspreken">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon"
@@ -20,7 +22,8 @@
         <activity android:name=".NewAccount" />
         <activity android:name=".ResultsActivity" />
         <activity android:name=".FinaalInitiaalActivity" />
-        <activity android:name=".DoelklankActivity"></activity>
+        <activity android:name=".DoelklankActivity" />
+        <activity android:name=".LuisterGoedActivity"></activity>
     </application>
 
 </manifest>
