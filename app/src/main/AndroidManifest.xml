@@ -18,7 +18,9 @@
         <activity android:name=".StartActivity" />
         <activity android:name=".FrontStopActivity" />
         <activity android:name=".NewAccount" />
-        <activity android:name=".ResultsActivity"></activity>
+        <activity android:name=".ResultsActivity" />
+        <activity android:name=".FinaalInitiaalActivity" />
+        <activity android:name=".DoelklankActivity"></activity>
     </application>
 
 </manifest>

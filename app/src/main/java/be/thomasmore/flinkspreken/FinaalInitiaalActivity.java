@@ -16,14 +16,17 @@ import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
 
-public class FrontStopActivity extends AppCompatActivity {
+public class FinaalInitiaalActivity extends AppCompatActivity {
+    private String frontstop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_front_stop);
+        setContentView(R.layout.activity_finaal_initiaal);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Bundle bundle = getIntent().getExtras();
+        frontstop = bundle.getString("frontstop");
     }
 
     public void onClickButtonInfo(View v) {
@@ -43,19 +46,18 @@ public class FrontStopActivity extends AppCompatActivity {
         layoutParams.bottomMargin = 4;
 
         TextView first_title = new TextView(this);
-        first_title.setText(R.string.fronting);
+        first_title.setText(R.string.finaal);
         first_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
 
         TextView first_text = new TextView(this);
-        first_text.setText(R.string.info_text_fronting);
-
+        first_text.setText(R.string.info_text_finaal);
 
         TextView second_title = new TextView(this);
-        second_title.setText(R.string.stopping);
+        second_title.setText(R.string.initiaal);
         second_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
 
         TextView second_text = new TextView(this);
-        second_text.setText(R.string.info_text_stopping);
+        second_text.setText(R.string.info_text_initiaal);
 
         first_title.setLayoutParams(layoutParams);
         first_text.setLayoutParams(layoutParams);
@@ -79,23 +81,26 @@ public class FrontStopActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void onClickButtonFronting(View v) {
+    public void onClickButtonFinaal(View v) {
         Bundle bundle = new Bundle();
-        bundle.putString("frontstop", "fronting");
+        bundle.putString("frontstop", frontstop);
+        bundle.putString("finaalinitiaal", "finaal");
 
-        Intent intent = new Intent(getApplicationContext(), FinaalInitiaalActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DoelklankActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    public void onClickButtonStopping(View v) {
+    public void onClickButtonInitiaal(View v) {
         Bundle bundle = new Bundle();
-        bundle.putString("frontstop", "stopping");
+        bundle.putString("frontstop", frontstop);
+        bundle.putString("finaalinitiaal", "initiaal");
 
-        Intent intent = new Intent(getApplicationContext(), FinaalInitiaalActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DoelklankActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
 
     //Back button
     @Override

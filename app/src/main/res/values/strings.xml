@@ -23,4 +23,9 @@
     <string name="info_popup_title">Info</string>
     <string name="info_popup_button">OK</string>
 
+    <string name="finaal">Finaal</string>
+    <string name="initiaal">Initiaal</string>
+    <string name="info_text_finaal">Achteraan het woord.</string>
+    <string name="info_text_initiaal">Vooraan het woord.</string>
+
 </resources>
