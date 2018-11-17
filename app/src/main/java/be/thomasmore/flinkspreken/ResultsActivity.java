@@ -28,20 +28,13 @@ public class ResultsActivity extends AppCompatActivity {
 
     private void toonScores() {
         Bundle bundle = getIntent().getExtras();
-        Bundle bundleScores = bundle.getBundle("bundle");
-        scores = (List<Score>) bundleScores.getSerializable("scores");
+        scores = (List<Score>) bundle.getSerializable("scores");
 
-        List<Long> scoreStrings = new ArrayList<Long>();
-        for (int i = 0; i < scores.size(); i++) {
-            scoreStrings.add(scores.get(i).getScore());
-        }
+        ResultAdapter adapter = new ResultAdapter(getApplicationContext(), scores);
+        final ListView listViewScores = (ListView) findViewById(R.id.listview_scores);
 
-        ArrayAdapter<Long> adapter = new ArrayAdapter<Long>(this, android.R.layout.simple_list_item_1, scoreStrings);
-
-        ListView listViewScores = (ListView) findViewById(R.id.listview_accounts);
         listViewScores.setAdapter(adapter);
     }
-
 
     //Back button
     @Override
