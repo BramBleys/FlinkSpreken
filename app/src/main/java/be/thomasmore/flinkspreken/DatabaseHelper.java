@@ -223,4 +223,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return numrows > 0;
     }
+
+    public Paar getPaar(long paarId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                "paren",
+                new String[]{"id", "naam"},
+                "id = ?",
+                new String[]{String.valueOf(paarId)},
+                null,
+                null,
+                null,
+                null);
+
+        Paar paar = new Paar();
+
+        if (cursor.moveToFirst()) {
+            paar = new Paar(cursor.getLong(0), cursor.getString(1));
+        }
+
+        cursor.close();
+        db.close();
+        return paar;
+    }
 }
