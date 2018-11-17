@@ -41,7 +41,7 @@ public class StartActivity extends AppCompatActivity {
         bundle.putSerializable("scores", (Serializable) scores);
 
         Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
-        intent.putExtra("bundle", bundle);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

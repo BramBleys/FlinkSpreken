@@ -28,8 +28,7 @@ public class ResultsActivity extends AppCompatActivity {
 
     private void toonScores() {
         Bundle bundle = getIntent().getExtras();
-        Bundle bundleScores = bundle.getBundle("bundle");
-        scores = (List<Score>) bundleScores.getSerializable("scores");
+        scores = (List<Score>) bundle.getSerializable("scores");
 
         List<Long> scoreStrings = new ArrayList<Long>();
         for (int i = 0; i < scores.size(); i++) {
