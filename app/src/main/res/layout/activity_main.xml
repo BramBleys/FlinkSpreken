@@ -32,6 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/account_text"
             android:dividerHeight="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="30dp"
             android:padding="10dp"/>
 
