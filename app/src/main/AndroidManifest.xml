@@ -23,7 +23,14 @@
         <activity android:name=".ResultsActivity" />
         <activity android:name=".FinaalInitiaalActivity" />
         <activity android:name=".DoelklankActivity" />
-        <activity android:name=".LuisterGoedActivity"></activity>
+        <activity android:name=".LuisterGoedActivity" />
+        <activity
+            android:name=".ZegHetZelfEensActivity"
+            android:label="@string/title_activity_zeg_het_zelf_eens" />
+        <activity
+            android:name=".SpelKiezenActivity"
+            android:label="@string/title_activity_spel_kiezen" />
+        <activity android:name=".ZegHetZelfEens"></activity>
     </application>
 
 </manifest>

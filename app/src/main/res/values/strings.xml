@@ -28,4 +28,13 @@
     <string name="info_text_finaal">Achteraan het woord.</string>
     <string name="info_text_initiaal">Vooraan het woord.</string>
 
+    <string name="luistergoed">Luister Goed</string>
+    <string name="zeghetzelfeens">Zeg Het Zelf Eens</string>
+    <string name="info_text_luistergoed">Het kind luisterd naar een aantal woorden, steek een hoofdtelefoon of oortjes in voor spel begint.</string>
+    <string name="info_text_zeghetzelfeens">Het kind drukt op een varkentje en krijgt een afbeelding te zien. Het kind benoemt mondeling wat het plaatje voorstelt. De ouder duidt onderaan het prentje aan dat aansluit bij de benoeming die het kind geeft.</string>
+
+    <string name="title_activity_zeg_het_zelf_eens">ZegHetZelfEensActivity</string>
+
+    <string name="title_activity_spel_kiezen">SpelKiezenActivity</string>
+
 </resources>
