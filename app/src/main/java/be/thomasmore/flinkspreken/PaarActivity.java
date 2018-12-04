@@ -1,7 +1,7 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -12,51 +12,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class DoelklankActivity extends AppCompatActivity {
+public class PaarActivity extends AppCompatActivity {
 
     private String frontstop;
     private String finaalinitiaal;
-    private List<String> klanken = new ArrayList<>();
+    private String klank;
+    private List<String> paren = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doelklank);
+        setContentView(R.layout.activity_paar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");
         finaalinitiaal = bundle.getString("finaalinitiaal");
+        klank = bundle.getString("klank");
 
-        if (frontstop.equals("fronting")) {
-            if (finaalinitiaal.equals("finaal")) {
-                klanken.add("K-T");
-                klanken.add("G-S");
-                klanken.add("NG-N");
-            } else {
-                klanken.add("K-T");
-                klanken.add("G-S/V");
-            }
-        } else {
-            if (finaalinitiaal.equals("finaal")) {
-                klanken.add("S-T");
-                klanken.add("CH-T");
-            } else {
-                klanken.add("G-K");
-                klanken.add("S/Z-T");
-                klanken.add("F-T");
-            }
-        }
-
+        vulParenOp();
         maakLayout();
     }
 
@@ -67,10 +47,10 @@ public class DoelklankActivity extends AppCompatActivity {
         Random random = new Random();
         int index;
 
-        for (int i = 0; i < klanken.size(); i++) {
+        for (int i = 0; i < paren.size(); i++) {
             Button button = new Button(this);
 
-            LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.topMargin = 16;
             layoutParams.leftMargin = 4;
             layoutParams.rightMargin = 4;
@@ -85,7 +65,7 @@ public class DoelklankActivity extends AppCompatActivity {
             }
 
             button.setLayoutParams(layoutParams);
-            button.setText(klanken.get(i));
+            button.setText(paren.get(i));
             button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             button.setPadding(10, 10, 10, 10);
             button.setGravity(Gravity.CENTER);
@@ -102,17 +82,67 @@ public class DoelklankActivity extends AppCompatActivity {
         }
     }
 
-    private void buttonClick(Button button) {
+    private void buttonClick(Button button){
         Bundle bundle = new Bundle();
         bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", finaalinitiaal);
-        bundle.putString("klank", button.getText().toString());
+        bundle.putString("klank", klank);
+        bundle.putString("paar", button.getText().toString());
 
-        Intent intent = new Intent(this, PaarActivity.class);
+        Intent intent = new Intent(this, SpelKiezenActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
+    private void vulParenOp() {
+        switch (klank) {
+            case "K-T":
+                if (finaalinitiaal.equals("finaal")) {
+                    paren.add("Bek-bed");
+                    paren.add("Nek-net");
+                    paren.add("Bak-bad");
+
+                } else {
+                    paren.add("Koe-toe");
+                    paren.add("Kou-touw");
+                    paren.add("Kam-tam");
+
+                }
+                break;
+            case "G-S":
+                paren.add("Buig-buis");
+                paren.add("Leeg-lees");
+                paren.add("Dag-das");
+                break;
+            case "NG-N":
+                paren.add("Pang-pan");
+                paren.add("Tong-ton");
+                break;
+            case "G-S/V":
+                paren.add("Guus-suus");
+                paren.add("Goed-voet");
+                paren.add("Goud-fout");
+                break;
+            case "S-T":
+                paren.add("Boos-boot");
+                paren.add("Bos-bot");
+                break;
+            case "CH-T":
+                paren.add("Pach-pet");
+                break;
+            case "G-K":
+                paren.add("Gat-kat");
+                break;
+            case "S/Z-T":
+                paren.add("Sok-tok");
+                paren.add("Zak-tak");
+                break;
+            case "F-T":
+                paren.add("Fee-thee");
+                paren.add("Fien-tien");
+                break;
+        }
+    }
 
     //Back button
     @Override
