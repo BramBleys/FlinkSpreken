@@ -23,6 +23,7 @@ public class LuisterGoedActivity extends AppCompatActivity {
     private String frontstop;
     private String finaalinitiaal;
     private String klank;
+    private String paar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class LuisterGoedActivity extends AppCompatActivity {
         frontstop = bundle.getString("frontstop");
         finaalinitiaal = bundle.getString("finaalinitiaal");
         klank = bundle.getString("klank");
+        paar = bundle.getString("paar");
 
         mediaPlayer = new MediaPlayer();
         setMediaPlayer();
@@ -41,17 +43,17 @@ public class LuisterGoedActivity extends AppCompatActivity {
 
     public void playAudio(View v) {
         AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-//        if (manager.isWiredHeadsetOn()) {
+        if (manager.isWiredHeadsetOn()) {
             if (!mediaPlayer.isPlaying()) {
                 mediaPlayer.start();
             }
-//        } else {
-//            ImageView headsetImage = (ImageView) findViewById(R.id.headset_image);
-//            Animation vibrateAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-//            headsetImage.startAnimation(vibrateAnimation);
-//
-//            Toast.makeText(getBaseContext(), "Plug je headset in!", Toast.LENGTH_SHORT).show();
-//        }
+        } else {
+            ImageView headsetImage = (ImageView) findViewById(R.id.headset_image);
+            Animation vibrateAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+            headsetImage.startAnimation(vibrateAnimation);
+
+            Toast.makeText(getBaseContext(), "Plug je headset in!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void setMediaPlayer() {
@@ -82,8 +84,11 @@ public class LuisterGoedActivity extends AppCompatActivity {
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks4);
                 break;
             case "S/Z-T":
-                //Hier moet nog onderscheid gemaakt worden tussen 2 paren
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks7);
+                if (paar.equals("Sok-tok")) {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks7);
+                } else {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks8);
+                }
                 break;
             case "F-T":
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks9);
