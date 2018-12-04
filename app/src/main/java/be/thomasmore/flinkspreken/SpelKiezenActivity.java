@@ -17,10 +17,19 @@ import be.thomasmore.flinkspreken.R;
 
 public class SpelKiezenActivity extends Activity {
 
+    private String frontstop;
+    private String finaalinitiaal;
+    private String klank;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spel_kiezen);
+
+        Bundle bundle = getIntent().getExtras();
+        frontstop = bundle.getString("frontstop");
+        finaalinitiaal = bundle.getString("finaalinitiaal");
+        klank = bundle.getString("klank");
     }
 
     public void onClickButtonInfo(View v) {
@@ -76,7 +85,13 @@ public class SpelKiezenActivity extends Activity {
     }
 
     public void onClickButtonLuisterGoed(View view){
+        Bundle bundle = new Bundle();
+        bundle.putString("frontstop", frontstop);
+        bundle.putString("finaalinitiaal", finaalinitiaal);
+        bundle.putString("klank", klank);
+
         Intent intent = new Intent(this, LuisterGoedActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

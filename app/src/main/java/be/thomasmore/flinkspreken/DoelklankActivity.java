@@ -54,8 +54,6 @@ public class DoelklankActivity extends AppCompatActivity {
             }
         }
 
-
-
         maakLayout();
     }
 
@@ -97,8 +95,7 @@ public class DoelklankActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", finaalinitiaal);
-        //not sure if this works/is necessary
-        bundle.putStringArrayList("klanken", (ArrayList<String>) klanken);
+        bundle.putString("klank", button.getText().toString());
 
         Intent intent = new Intent(this, SpelKiezenActivity.class);
         intent.putExtras(bundle);
