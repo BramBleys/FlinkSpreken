@@ -6,20 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".StartActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tekeningnijlpaard_zonder_pijl" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -54,14 +60,12 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="250dp"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/bg_image" />
+            android:src="@drawable/tekeningkoe" />
 
-    </RelativeLayout>
-
-
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
