@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.Image;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +20,10 @@ import java.time.Duration;
 public class LuisterGoedActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
+    private String frontstop;
+    private String finaalinitiaal;
+    private String klank;
+    private String paar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,14 @@ public class LuisterGoedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_luister_goed);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.audio_test);
+        Bundle bundle = getIntent().getExtras();
+        frontstop = bundle.getString("frontstop");
+        finaalinitiaal = bundle.getString("finaalinitiaal");
+        klank = bundle.getString("klank");
+        paar = bundle.getString("paar");
+
+        mediaPlayer = new MediaPlayer();
+        setMediaPlayer();
     }
 
     public void playAudio(View v) {
@@ -44,6 +56,47 @@ public class LuisterGoedActivity extends AppCompatActivity {
         }
     }
 
+    public void setMediaPlayer() {
+        switch (klank) {
+            case "K-T":
+                if (finaalinitiaal.equals("finaal")) {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks1);
+                } else {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks2);
+                }
+                break;
+            case "G-S":
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks3);
+                break;
+            case "NG-N":
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks5);
+                break;
+            case "G-S/V":
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks4);
+                break;
+            case "S-T":
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks6);
+                break;
+            case "CH-T":
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks3);
+                break;
+            case "G-K":
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks4);
+                break;
+            case "S/Z-T":
+                if (paar.equals("Sok-tok")) {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks7);
+                } else {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks8);
+                }
+                break;
+            case "F-T":
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.reeks9);
+                break;
+        }
+
+    }
+
     //Back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -59,5 +112,11 @@ public class LuisterGoedActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mediaPlayer.stop();
     }
 }

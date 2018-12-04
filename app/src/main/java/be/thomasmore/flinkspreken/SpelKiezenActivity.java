@@ -5,22 +5,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import be.thomasmore.flinkspreken.R;
+public class SpelKiezenActivity extends AppCompatActivity {
 
-public class SpelKiezenActivity extends Activity {
+    private String frontstop;
+    private String finaalinitiaal;
+    private String klank;
+    private String paar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spel_kiezen);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Bundle bundle = getIntent().getExtras();
+        frontstop = bundle.getString("frontstop");
+        finaalinitiaal = bundle.getString("finaalinitiaal");
+        klank = bundle.getString("klank");
+        paar = bundle.getString("paar");
     }
 
     public void onClickButtonInfo(View v) {
@@ -76,7 +90,14 @@ public class SpelKiezenActivity extends Activity {
     }
 
     public void onClickButtonLuisterGoed(View view){
+        Bundle bundle = new Bundle();
+        bundle.putString("frontstop", frontstop);
+        bundle.putString("finaalinitiaal", finaalinitiaal);
+        bundle.putString("klank", klank);
+        bundle.putString("paar", paar);
+
         Intent intent = new Intent(this, LuisterGoedActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
@@ -84,6 +105,22 @@ public class SpelKiezenActivity extends Activity {
     public void onClickButtonZegHetZelfEens(View view){
         Intent intent = new Intent(this, ZegHetZelfEens.class);
         startActivity(intent);
+    }
+
+    //Back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 
 }

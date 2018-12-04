@@ -1,6 +1,7 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -16,7 +17,9 @@ import android.widget.TextView;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class DoelklankActivity extends AppCompatActivity {
 
@@ -54,13 +57,15 @@ public class DoelklankActivity extends AppCompatActivity {
             }
         }
 
-
-
         maakLayout();
     }
 
     private void maakLayout() {
         LinearLayout layout = (LinearLayout) findViewById(R.id.linearlayout);
+        List<Integer> ids = Arrays.asList(R.drawable.button_blauw, R.drawable.button_bruin, R.drawable.button_green);
+        List<Integer> previousNumbers = new ArrayList<Integer>();
+        Random random = new Random();
+        int index;
 
         for (int i = 0; i < klanken.size(); i++) {
             Button button = new Button(this);
@@ -71,17 +76,21 @@ public class DoelklankActivity extends AppCompatActivity {
             layoutParams.rightMargin = 4;
             layoutParams.bottomMargin = 4;
 
+            while (true) {
+                index = random.nextInt(ids.size());
+                if (!previousNumbers.contains(index)) {
+                    previousNumbers.add(index);
+                    break;
+                }
+            }
+
             button.setLayoutParams(layoutParams);
             button.setText(klanken.get(i));
             button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             button.setPadding(10, 10, 10, 10);
             button.setGravity(Gravity.CENTER);
-            button.setBackgroundResource(R.drawable.button_green);
+            button.setBackgroundResource(ids.get(index));
             button.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics()));
-
-//            TypedValue value = new TypedValue();
-//            getApplicationContext().getTheme().resolveAttribute(R.style.Widget_AppCompat_Button_Borderless, value, true);
-//            button.setBackgroundResource(value.resourceId);
 
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -93,14 +102,13 @@ public class DoelklankActivity extends AppCompatActivity {
         }
     }
 
-    private void buttonClick(Button button){
+    private void buttonClick(Button button) {
         Bundle bundle = new Bundle();
         bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", finaalinitiaal);
-        //not sure if this works/is necessary
-        bundle.putStringArrayList("klanken", (ArrayList<String>) klanken);
+        bundle.putString("klank", button.getText().toString());
 
-        Intent intent = new Intent(this, SpelKiezenActivity.class);
+        Intent intent = new Intent(this, PaarActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
