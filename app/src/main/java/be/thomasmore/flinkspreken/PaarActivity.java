@@ -128,7 +128,7 @@ public class PaarActivity extends AppCompatActivity {
                 paren.add("Bos-bot");
                 break;
             case "CH-T":
-                paren.add("Pach-pet");
+                paren.add("Pech-pet");
                 break;
             case "G-K":
                 paren.add("Gat-kat");
