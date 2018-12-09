@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 public class SpelKiezenActivity extends AppCompatActivity {
 
+    private long accountId;
     private String frontstop;
     private String finaalinitiaal;
     private String klank;
@@ -29,12 +30,12 @@ public class SpelKiezenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_spel_kiezen);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");
         finaalinitiaal = bundle.getString("finaalinitiaal");
         klank = bundle.getString("klank");
         paar = bundle.getString("paar");
+        accountId = bundle.getLong("id");
     }
 
     public void onClickButtonInfo(View v) {
@@ -91,7 +92,6 @@ public class SpelKiezenActivity extends AppCompatActivity {
 
     public void onClickButtonLuisterGoed(View view){
         Bundle bundle = new Bundle();
-        bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", finaalinitiaal);
         bundle.putString("klank", klank);
         bundle.putString("paar", paar);
@@ -104,6 +104,16 @@ public class SpelKiezenActivity extends AppCompatActivity {
 
     public void onClickButtonZegHetZelfEens(View view){
         Intent intent = new Intent(this, ZegHetZelfEens.class);
+        startActivity(intent);
+    }
+
+    public void onClickButtonHondjeWaf(View v){
+        Bundle bundle = new Bundle();
+        bundle.putLong("id", accountId);
+        bundle.putString("paar", paar);
+
+        Intent intent = new Intent(this, HondjeWaf.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

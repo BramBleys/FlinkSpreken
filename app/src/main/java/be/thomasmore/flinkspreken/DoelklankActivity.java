@@ -23,6 +23,7 @@ import java.util.Random;
 
 public class DoelklankActivity extends AppCompatActivity {
 
+    private long accountId;
     private String frontstop;
     private String finaalinitiaal;
     private List<String> klanken = new ArrayList<>();
@@ -36,6 +37,7 @@ public class DoelklankActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");
         finaalinitiaal = bundle.getString("finaalinitiaal");
+        accountId = bundle.getLong("id");
 
         if (frontstop.equals("fronting")) {
             if (finaalinitiaal.equals("finaal")) {
@@ -104,6 +106,7 @@ public class DoelklankActivity extends AppCompatActivity {
 
     private void buttonClick(Button button) {
         Bundle bundle = new Bundle();
+        bundle.putLong("id", accountId);
         bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", finaalinitiaal);
         bundle.putString("klank", button.getText().toString());

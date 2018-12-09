@@ -30,7 +30,11 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void onClickButtonStart(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putLong("id", gebruiker.getId());
+
         Intent intent = new Intent(getApplicationContext(), FrontStopActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

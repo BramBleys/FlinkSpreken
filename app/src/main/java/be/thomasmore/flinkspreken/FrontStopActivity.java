@@ -18,12 +18,16 @@ import android.widget.LinearLayout.LayoutParams;
 
 public class FrontStopActivity extends AppCompatActivity {
 
+    private long accountId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_front_stop);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Bundle bundle = getIntent().getExtras();
+        accountId = bundle.getLong("id");
     }
 
     public void onClickButtonInfo(View v) {
@@ -82,6 +86,7 @@ public class FrontStopActivity extends AppCompatActivity {
     public void onClickButtonFronting(View v) {
         Bundle bundle = new Bundle();
         bundle.putString("frontstop", "fronting");
+        bundle.putLong("id", accountId);
 
         Intent intent = new Intent(getApplicationContext(), FinaalInitiaalActivity.class);
         intent.putExtras(bundle);
@@ -91,6 +96,7 @@ public class FrontStopActivity extends AppCompatActivity {
     public void onClickButtonStopping(View v) {
         Bundle bundle = new Bundle();
         bundle.putString("frontstop", "stopping");
+        bundle.putLong("id", accountId);
 
         Intent intent = new Intent(getApplicationContext(), FinaalInitiaalActivity.class);
         intent.putExtras(bundle);

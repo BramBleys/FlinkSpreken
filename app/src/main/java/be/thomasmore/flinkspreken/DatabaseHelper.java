@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "flinkSpreken";
 
     public DatabaseHelper(Context context) {
@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String CREATE_TABLE_SCORES = "CREATE TABLE scores (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "score INTEGER," +
+                "score STRING," +
                 "accountId INTEGER," +
                 "paarId INTEGER," +
                 "FOREIGN KEY (accountId) REFERENCES accounts(id)," +
@@ -86,19 +86,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertScores(SQLiteDatabase db) {
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES (5,1,2);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES (10,1,5);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES (6,1,3);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES (4,2,5);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES (8,2,2);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES (6,2,4);");
+        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('5/10',1,2);");
+        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('4/6',1,5);");
+        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('3/5',1,3);");
+        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('6/12',2,5);");
+        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('8/10',2,2);");
+        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('9/11',2,4);");
     }
 
     //-------------------------------------------------------------------------------------------------
     //  CRUD Operations
     //-------------------------------------------------------------------------------------------------
 
-    public long insertScore(long score, long accountId, long paarId) {
+    public long insertScore(String score, long accountId, long paarId) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -141,7 +141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Score score = new Score(Long.parseLong(cursor.getString(0)),
-                        Long.parseLong(cursor.getString(1)), Long.parseLong(cursor.getString(2)), Long.parseLong(cursor.getString(3)));
+                        cursor.getString(1), Long.parseLong(cursor.getString(2)), Long.parseLong(cursor.getString(3)));
                 lijst.add(score);
             } while (cursor.moveToNext());
         }
@@ -232,6 +232,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{"id", "naam"},
                 "id = ?",
                 new String[]{String.valueOf(paarId)},
+                null,
+                null,
+                null,
+                null);
+
+        Paar paar = new Paar();
+
+        if (cursor.moveToFirst()) {
+            paar = new Paar(cursor.getLong(0), cursor.getString(1));
+        }
+
+        cursor.close();
+        db.close();
+        return paar;
+    }
+
+    public Paar getPaar(String paarString){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                "paren",
+                new String[]{"id", "naam"},
+                "naam = ?",
+                new String[]{String.valueOf(paarString)},
                 null,
                 null,
                 null,
