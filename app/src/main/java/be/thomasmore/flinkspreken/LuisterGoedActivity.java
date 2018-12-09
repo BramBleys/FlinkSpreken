@@ -20,7 +20,6 @@ import java.time.Duration;
 public class LuisterGoedActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
-    private String frontstop;
     private String finaalinitiaal;
     private String klank;
     private String paar;
@@ -32,7 +31,6 @@ public class LuisterGoedActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle bundle = getIntent().getExtras();
-        frontstop = bundle.getString("frontstop");
         finaalinitiaal = bundle.getString("finaalinitiaal");
         klank = bundle.getString("klank");
         paar = bundle.getString("paar");

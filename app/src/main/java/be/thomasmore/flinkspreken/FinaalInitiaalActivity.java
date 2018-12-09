@@ -17,6 +17,7 @@ import android.widget.LinearLayout.LayoutParams;
 
 
 public class FinaalInitiaalActivity extends AppCompatActivity {
+    private long accountId;
     private String frontstop;
 
     @Override
@@ -27,6 +28,7 @@ public class FinaalInitiaalActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");
+        accountId = bundle.getLong("id");
     }
 
     public void onClickButtonInfo(View v) {
@@ -83,6 +85,7 @@ public class FinaalInitiaalActivity extends AppCompatActivity {
 
     public void onClickButtonFinaal(View v) {
         Bundle bundle = new Bundle();
+        bundle.putLong("id", accountId);
         bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", "finaal");
 
@@ -93,6 +96,7 @@ public class FinaalInitiaalActivity extends AppCompatActivity {
 
     public void onClickButtonInitiaal(View v) {
         Bundle bundle = new Bundle();
+        bundle.putLong("id", accountId);
         bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", "initiaal");
 

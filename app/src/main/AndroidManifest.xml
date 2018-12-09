@@ -27,7 +27,8 @@
         <activity android:name=".ZegHetZelfEensActivity" />
         <activity android:name=".SpelKiezenActivity" />
         <activity android:name=".ZegHetZelfEens" />
-        <activity android:name=".PaarActivity"></activity>
+        <activity android:name=".PaarActivity" />
+        <activity android:name=".HondjeWaf" />
     </application>
 
 </manifest>

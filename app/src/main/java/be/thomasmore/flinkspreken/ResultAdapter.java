@@ -32,7 +32,7 @@ public class ResultAdapter extends ArrayAdapter<Score> {
         final TextView textViewScore = (TextView) rowView.findViewById(R.id.score_textview);
 
         String paar_naam = db.getPaar(values.get(position).getPaarId()).getnaam();
-        String score_string = Long.toString(values.get(position).getScore());
+        String score_string = values.get(position).getScore();
 
         textViewPaar.setText(paar_naam);
         textViewScore.setText(score_string);

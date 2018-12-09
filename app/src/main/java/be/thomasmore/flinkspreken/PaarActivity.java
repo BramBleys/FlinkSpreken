@@ -20,6 +20,7 @@ import java.util.Random;
 
 public class PaarActivity extends AppCompatActivity {
 
+    private long accountId;
     private String frontstop;
     private String finaalinitiaal;
     private String klank;
@@ -35,6 +36,7 @@ public class PaarActivity extends AppCompatActivity {
         frontstop = bundle.getString("frontstop");
         finaalinitiaal = bundle.getString("finaalinitiaal");
         klank = bundle.getString("klank");
+        accountId = bundle.getLong("id");
 
         vulParenOp();
         maakLayout();
@@ -84,6 +86,7 @@ public class PaarActivity extends AppCompatActivity {
 
     private void buttonClick(Button button){
         Bundle bundle = new Bundle();
+        bundle.putLong("id", accountId);
         bundle.putString("frontstop", frontstop);
         bundle.putString("finaalinitiaal", finaalinitiaal);
         bundle.putString("klank", klank);

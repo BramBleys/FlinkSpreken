@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class Score implements Serializable{
     private long id;
-    private long score;
+    private String score;
     private long accountId;
     private long paarId;
 
     public Score() {
     }
 
-    public Score(long id, long score, long accountId, long paarId) {
+    public Score(long id, String score, long accountId, long paarId) {
         this.id = id;
         this.score = score;
         this.accountId = accountId;
@@ -26,11 +26,11 @@ public class Score implements Serializable{
         this.id = id;
     }
 
-    public long getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(long score) {
+    public void setScore(String score) {
         this.score = score;
     }
 

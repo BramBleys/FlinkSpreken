@@ -65,6 +65,21 @@
             android:textSize="20sp" />
 
 
+        <Button
+            android:id="@+id/hondjewaf"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zeghetzelfeens"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_bruin"
+            android:onClick="onClickButtonHondjeWaf"
+            android:padding="10dp"
+            android:text="@string/hondjewaf"
+            android:textSize="20sp" />
+
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
