@@ -86,22 +86,22 @@ public class ZegHetZelfEens extends AppCompatActivity {
             LinearLayout sublayout = (LinearLayout) findViewById(getResources().getIdentifier("rij_" + (i + 1), "id", getPackageName()));
 
             for (int j = 0; j < sublayout.getChildCount(); j++) {
-                EasyFlipView flipview = findViewById(getResources().getIdentifier("rij_" + (i+1) + "_flip" + (j + 1), "id", getPackageName()));
+                EasyFlipView flipview = findViewById(getResources().getIdentifier("rij_" + (i + 1) + "_flip" + (j + 1), "id", getPackageName()));
 
                 ImageView imageView =
-                        (ImageView) flipview.findViewById(getResources().getIdentifier("rij_" + (i+1) + "_flip" + (j + 1) + "_back", "id", getPackageName()));
+                        (ImageView) flipview.findViewById(getResources().getIdentifier("rij_" + (i + 1) + "_flip" + (j + 1) + "_back", "id", getPackageName()));
 
                 imageSwitcher = r.nextInt(2);
-                if ((imageSwitcher % 2) == 0 && image0 <= 4){
+                if ((imageSwitcher % 2) == 0 && image0 <= 4) {
                     imageView.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
                     imageView.setTag(woorden[0].toLowerCase());
                     image0++;
-                }else{
-                    if ((imageSwitcher % 2) == 1 && image1 <= 4){
+                } else {
+                    if ((imageSwitcher % 2) == 1 && image1 <= 4) {
                         imageView.setImageResource(getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()));
                         imageView.setTag(woorden[1].toLowerCase());
                         image1++;
-                    }else{
+                    } else {
                         imageView.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
                         imageView.setTag(woorden[0].toLowerCase());
                         image0++;
@@ -152,6 +152,10 @@ public class ZegHetZelfEens extends AppCompatActivity {
     }
 
     public void onClickButtonOpslaan(View v) {
+        opslaan();
+    }
+
+    private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
         db.insertScore(score, accountId, paar.getId());
@@ -159,38 +163,51 @@ public class ZegHetZelfEens extends AppCompatActivity {
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
     }
 
+    private void showAlert() {
+        if (totaalScore > 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(false);
+            builder.setMessage("Je score is niet opgeslagen, ben je zeker dat je terug wil gaan ?");
+            builder.setPositiveButton("Opslaan en terug gaan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user pressed "yes", then he is allowed to exit from application
+                    opslaan();
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Annuleer", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user select "No", just cancel this dialog and continue with app
+                    dialog.cancel();
+                }
+            });
+
+            builder.setNeutralButton("Niet opslaan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        showAlert();
+    }
+
     //Back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-
-                if (totaalScore > 0){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setCancelable(false);
-                    builder.setMessage("Je score is niet opgeslagen, ben je zeker dat je terug wil gaan ?");
-                    builder.setPositiveButton("Toch terug gaan", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //if user pressed "yes", then he is allowed to exit from application
-                            finish();
-                        }
-                    });
-                    builder.setNegativeButton("Annuleer", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //if user select "No", just cancel this dialog and continue with app
-                            dialog.cancel();
-                        }
-                    });
-                    AlertDialog alert = builder.create();
-                    alert.show();
-                }else{
-                    finish();
-                }
-
-                //finish();
-                //return true;
+                showAlert();
         }
 
         return super.onOptionsItemSelected(item);
