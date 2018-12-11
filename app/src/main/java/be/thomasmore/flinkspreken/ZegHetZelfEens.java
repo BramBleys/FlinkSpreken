@@ -154,6 +154,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
     public void onClickButtonOpslaan(View v) {
         opslaan();
+        finish();
     }
 
     private void opslaan() {
