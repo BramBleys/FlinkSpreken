@@ -1,7 +1,9 @@
 package be.thomasmore.flinkspreken;
 
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -93,11 +95,48 @@ public class HondjeWaf extends AppCompatActivity {
     }
 
     public void onClickButtonOpslaan(View v) {
+        opslaan();
+    }
+
+    private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
         db.insertScore(score, accountId, paar.getId());
 
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showAlert() {
+        if (totaalScore > 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(false);
+            builder.setMessage("Je score is niet opgeslagen, ben je zeker dat je terug wil gaan ?");
+            builder.setPositiveButton("Opslaan en terug gaan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user pressed "yes", then he is allowed to exit from application
+                    opslaan();
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Annuleer", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user select "No", just cancel this dialog and continue with app
+                    dialog.cancel();
+                }
+            });
+            builder.setNeutralButton("Niet opslaan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            finish();
+        }
     }
 
     private void setImages() {
@@ -153,13 +192,17 @@ public class HondjeWaf extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        showAlert();
+    }
+
     //Back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
-                return true;
+                showAlert();
         }
 
         return super.onOptionsItemSelected(item);
