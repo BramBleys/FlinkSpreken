@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,6 +26,7 @@ import java.util.TimerTask;
 public class HondjeWaf extends AppCompatActivity {
     private long accountId;
     private String paar;
+    private String spel;
 
     private Timer timer;
     private TimerTask timerTask;
@@ -47,6 +51,7 @@ public class HondjeWaf extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         paar = bundle.getString("paar");
         accountId = bundle.getLong("id");
+        spel = bundle.getString("spel");
 
         woorden = paar.split("-");
         mediaPlayer = new MediaPlayer();
@@ -101,7 +106,7 @@ public class HondjeWaf extends AppCompatActivity {
     private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
-        db.insertScore(score, accountId, paar.getId());
+        db.insertScore(score, accountId, spel, DateFormat.getDateTimeInstance().format(new Date()), paar.getId());
 
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
     }

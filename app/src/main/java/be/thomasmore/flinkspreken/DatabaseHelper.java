@@ -6,12 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "flinkSpreken";
 
     public DatabaseHelper(Context context) {
@@ -34,6 +36,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "score STRING," +
                 "accountId INTEGER," +
+                "spel STRING," +
+                "datum TIMESTAMP," +
                 "paarId INTEGER," +
                 "FOREIGN KEY (accountId) REFERENCES accounts(id)," +
                 "FOREIGN KEY (paarId) REFERENCES paren(id))";
@@ -86,24 +90,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertScores(SQLiteDatabase db) {
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('5/10',1,2);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('4/6',1,5);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('3/5',1,3);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('6/12',2,5);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('8/10',2,2);");
-        db.execSQL("INSERT INTO scores (score, accountId, paarId) VALUES ('9/11',2,4);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('5/10',1, 'hondje waf', '2016-01-01 10:20:05.123', 2);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('4/6',1, 'zeg het zelf eens', '2018-06-20 15:20:05.123', 5);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('3/5',1, 'hondje waf', '2018-01-01 10:20:05.123',3);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('6/12',2, 'zeg het zelf eens', '2016-05-01 10:20:05.123',5);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('8/10',2, 'zeg het zelf eens', '2016-08-01 10:20:05.123',2);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('9/11',2, 'hondje waf', '2017-01-01 10:20:05.123',4);");
     }
 
     //-------------------------------------------------------------------------------------------------
     //  CRUD Operations
     //-------------------------------------------------------------------------------------------------
 
-    public long insertScore(String score, long accountId, long paarId) {
+    public long insertScore(String score, long accountId, String spel, String datum, long paarId) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("score", score);
         values.put("accountId", accountId);
+        values.put("spel", spel);
+        values.put("datum", datum);
         values.put("paarId", paarId);
 
         long id = db.insert("scores", null, values);
@@ -112,25 +118,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public boolean deleteScore(long id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        int numrows = db.delete(
-                "scores",
-                "id = ?",
-                new String[]{String.valueOf(id)});
-
-        db.close();
-        return numrows > 0;
-    }
-
     public List<Score> getScores(long accountId) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Score> lijst = new ArrayList<Score>();
 
         Cursor cursor = db.query(
                 "scores",
-                new String[]{"id", "score", "accountId", "paarId"},
+                new String[]{"id", "score", "accountId", "spel", "datum", "paarId"},
                 "accountId = ?",
                 new String[]{String.valueOf(accountId)},
                 null,
@@ -141,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Score score = new Score(Long.parseLong(cursor.getString(0)),
-                        cursor.getString(1), Long.parseLong(cursor.getString(2)), Long.parseLong(cursor.getString(3)));
+                        cursor.getString(1), Long.parseLong(cursor.getString(2)), cursor.getString(3), cursor.getString(4), Long.parseLong(cursor.getString(5)));
                 lijst.add(score);
             } while (cursor.moveToNext());
         }
@@ -248,7 +242,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return paar;
     }
 
-    public Paar getPaar(String paarString){
+    public Paar getPaar(String paarString) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(
