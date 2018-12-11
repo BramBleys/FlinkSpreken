@@ -20,4 +20,22 @@
         android:padding="8dp"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/score_spel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/score_textview"
+        android:padding="8dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/score_datum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/score_spel"
+        android:padding="8dp"
+        android:textSize="20sp" />
+
 </RelativeLayout>

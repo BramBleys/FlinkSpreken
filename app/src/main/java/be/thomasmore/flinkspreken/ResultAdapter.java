@@ -30,12 +30,18 @@ public class ResultAdapter extends ArrayAdapter<Score> {
 
         final TextView textViewPaar = (TextView) rowView.findViewById(R.id.paar_textview);
         final TextView textViewScore = (TextView) rowView.findViewById(R.id.score_textview);
+        final TextView textViewSpel = (TextView) rowView.findViewById(R.id.score_spel);
+        final TextView textViewDatum = (TextView) rowView.findViewById(R.id.score_datum);
 
         String paar_naam = db.getPaar(values.get(position).getPaarId()).getnaam();
         String score_string = values.get(position).getScore();
+        String spel = values.get(position).getSpel();
+        String datum = values.get(position).getDatum();
 
         textViewPaar.setText(paar_naam);
         textViewScore.setText(score_string);
+        textViewSpel.setText(spel);
+        textViewDatum.setText(datum);
 
         return rowView;
     }

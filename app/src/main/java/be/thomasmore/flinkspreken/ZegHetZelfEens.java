@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
+import java.text.DateFormat;
 import java.util.Random;
 
 public class ZegHetZelfEens extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
     private long accountId;
     private String paar;
+    private String spel;
     private DatabaseHelper db;
 
     @Override
@@ -46,8 +48,9 @@ public class ZegHetZelfEens extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle bundle = getIntent().getExtras();
-        paar = bundle.getString("paar");
         accountId = bundle.getLong("id");
+        spel = bundle.getString("spel");
+        paar = bundle.getString("paar");
         woorden = paar.split("-");
 
         db = new DatabaseHelper(this);
@@ -122,8 +125,6 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 k++;
             }
         }
-
-
     }
 
     public void checkJuist(ImageView v) {
@@ -158,7 +159,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
     private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
-        db.insertScore(score, accountId, paar.getId());
+        db.insertScore(score, accountId, spel, DateFormat.getDateTimeInstance().toString(), paar.getId());
 
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
     }

@@ -106,6 +106,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putLong("id", accountId);
         bundle.putString("paar", paar);
+        bundle.putString("spel", "Zeg het zelf eens");
 
         Intent intent = new Intent(this, ZegHetZelfEens.class);
         intent.putExtras(bundle);
@@ -116,6 +117,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putLong("id", accountId);
         bundle.putString("paar", paar);
+        bundle.putString("spel", "Hondje waf");
 
         Intent intent = new Intent(this, HondjeWaf.class);
         intent.putExtras(bundle);
