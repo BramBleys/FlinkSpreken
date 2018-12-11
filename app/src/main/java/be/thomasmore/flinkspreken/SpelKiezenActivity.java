@@ -103,7 +103,12 @@ public class SpelKiezenActivity extends AppCompatActivity {
 
 
     public void onClickButtonZegHetZelfEens(View view){
+        Bundle bundle = new Bundle();
+        bundle.putLong("id", accountId);
+        bundle.putString("paar", paar);
+
         Intent intent = new Intent(this, ZegHetZelfEens.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
