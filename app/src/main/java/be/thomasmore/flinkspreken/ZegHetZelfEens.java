@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class ZegHetZelfEens extends AppCompatActivity {
@@ -160,7 +162,10 @@ public class ZegHetZelfEens extends AppCompatActivity {
     private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
-        db.insertScore(score, accountId, spel, DateFormat.getDateTimeInstance().toString(), paar.getId());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String dateTime = LocalDateTime.now().format(formatter);
+
+        db.insertScore(score, accountId, spel, dateTime, paar.getId());
 
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
     }
