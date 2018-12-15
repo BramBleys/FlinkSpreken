@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
@@ -107,7 +108,10 @@ public class HondjeWaf extends AppCompatActivity {
     private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
-        db.insertScore(score, accountId, spel, DateFormat.getDateTimeInstance().format(new Date()), paar.getId());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        String dateTime = LocalDateTime.now().format(formatter);
+
+        db.insertScore(score, accountId, spel, dateTime, paar.getId());
 
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
     }

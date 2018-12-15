@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "flinkSpreken";
 
     public DatabaseHelper(Context context) {
@@ -90,12 +90,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertScores(SQLiteDatabase db) {
-        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('5/10',1, 'hondje waf', '2016-01-01 10:20:05.123', 2);");
-        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('4/6',1, 'zeg het zelf eens', '2018-06-20 15:20:05.123', 5);");
-        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('3/5',1, 'hondje waf', '2018-01-01 10:20:05.123',3);");
-        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('6/12',2, 'zeg het zelf eens', '2016-05-01 10:20:05.123',5);");
-        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('8/10',2, 'zeg het zelf eens', '2016-08-01 10:20:05.123',2);");
-        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('9/11',2, 'hondje waf', '2017-01-01 10:20:05.123',4);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('5/10',1, 'hondje waf', '01-01-2016 10:20', 2);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('4/6',1, 'zeg het zelf eens', '20-06-2018 15:20', 5);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('3/5',1, 'hondje waf', '01-01-2018 10:20',3);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('6/12',2, 'zeg het zelf eens', '05-01-2016 10:20',5);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('8/10',2, 'zeg het zelf eens', '01-08-2017 10:20',2);");
+        db.execSQL("INSERT INTO scores (score, accountId, spel, datum, paarId) VALUES ('9/11',2, 'hondje waf', '01-01-2017 10:20',4);");
     }
 
     //-------------------------------------------------------------------------------------------------
