@@ -10,18 +10,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical">
-
-
-    </LinearLayout>
+        android:orientation="vertical"></LinearLayout>
 
     <LinearLayout
         android:id="@+id/second_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"></LinearLayout>
 
-
-    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/third_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
 
 </LinearLayout>

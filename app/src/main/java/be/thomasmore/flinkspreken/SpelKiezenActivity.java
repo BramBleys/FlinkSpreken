@@ -45,6 +45,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         final View viewInflater = inflater.inflate(R.layout.info_popup, null);
         LinearLayout first_layout = (LinearLayout) viewInflater.findViewById(R.id.first_layout);
         LinearLayout second_layout = (LinearLayout) viewInflater.findViewById(R.id.second_layout);
+        LinearLayout third_layout = (LinearLayout) viewInflater.findViewById(R.id.third_layout);
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -68,16 +69,26 @@ public class SpelKiezenActivity extends AppCompatActivity {
         TextView second_text = new TextView(this);
         second_text.setText(R.string.info_text_zeghetzelfeens);
 
+        TextView third_title = new TextView(this);
+        third_title.setText(R.string.hondjewaf);
+        third_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+
+        TextView third_text = new TextView(this);
+        third_text.setText(R.string.info_text_hondjewaf);
+
         first_title.setLayoutParams(layoutParams);
         first_text.setLayoutParams(layoutParams);
         second_title.setLayoutParams(layoutParams);
         second_text.setLayoutParams(layoutParams);
+        third_title.setLayoutParams(layoutParams);
+        third_text.setLayoutParams(layoutParams);
 
         first_layout.addView(first_title);
         first_layout.addView(first_text);
         second_layout.addView(second_title);
         second_layout.addView(second_text);
-
+        third_layout.addView(third_title);
+        third_layout.addView(third_text);
 
         builder.setTitle(R.string.info_popup_title)
                 .setIcon(R.drawable.info_icon)

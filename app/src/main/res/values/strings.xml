@@ -31,8 +31,10 @@
     <string name="luistergoed">Luister Goed</string>
     <string name="zeghetzelfeens">Zeg Het Zelf Eens</string>
     <string name="hondjewaf">Hondje waf</string>
+
     <string name="info_text_luistergoed">Het kind luisterd naar een aantal woorden, steek een hoofdtelefoon of oortjes in voor spel begint.</string>
-    <string name="info_text_zeghetzelfeens">Het kind drukt op een varkentje en krijgt een afbeelding te zien. Het kind benoemt mondeling wat het plaatje voorstelt. De ouder duidt onderaan het prentje aan dat aansluit bij de benoeming die het kind geeft.</string>
+    <string name="info_text_zeghetzelfeens">Het kind drukt op een vraagteken en krijgt een afbeelding te zien. Het kind benoemt mondeling wat het plaatje voorstelt. De ouder duidt onderaan het prentje aan dat aansluit bij de benoeming die het kind geeft.</string>
+    <string name="info_text_hondjewaf">Het kind drukt op het botje van de hond om een woord te horen. Onderaan staan 2 afbeeldingen. Het kind drukt op de afbeelding die hoort bij het uitgesproken woord.</string>
 
     <string name="title_activity_zeg_het_zelf_eens">ZegHetZelfEensActivity</string>
 
