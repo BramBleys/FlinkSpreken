@@ -108,7 +108,7 @@ public class HondjeWaf extends AppCompatActivity {
     private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         String dateTime = LocalDateTime.now().format(formatter);
 
         db.insertScore(score, accountId, spel, dateTime, paar.getId());
