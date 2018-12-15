@@ -87,7 +87,7 @@ public class HondjeWaf extends AppCompatActivity {
                 Random random = new Random();
                 int randomIndex = random.nextInt(goedzo_geluidjes.length);
 
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), getResources().getIdentifier(goedzo_geluidjes[randomIndex], "raw", getPackageName()));
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bark);
                 mediaPlayer.start();
 
                 antwoord = "";
