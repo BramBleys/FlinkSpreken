@@ -43,6 +43,10 @@ public class ZegHetZelfEens extends AppCompatActivity {
     private String spel;
     private DatabaseHelper db;
 
+    private String[] goedzo_geluidjes = new String[]{"bravo", "bravo2", "dikke_duim", "dikke_duim2", "goed_gedaan", "goedzo", "super_gedaan"};
+    private MediaPlayer mediaPlayer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
         woorden = paar.split("-");
 
         db = new DatabaseHelper(this);
+        mediaPlayer = new MediaPlayer();
 
         setImages();
     }
@@ -131,18 +136,26 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
     public void checkJuist(ImageView v) {
         if (clicked) {
-            Log.i("LOGTEST", "Flippedimagetag -> " + clickedFlipView.getChildAt(1).getTag());
-            Log.i("LOGTEST", "Juist/Fout knop -> " + v.getTag());
+            totaalScore++;
+
             if (v.getTag().equals(clickedFlipView.getChildAt(1).getTag())) {
-                totaalScore++;
                 behaaldeScore++;
+
                 clickedFlipView.setFlipEnabled(false);
+                clickedFlipView.setOnClickListener(null);
+
                 ImageView view = (ImageView) clickedFlipView.getChildAt(1);
                 view.setImageResource(R.drawable.correct);
-                clickedFlipView.setOnClickListener(null);
+
+                Random random = new Random();
+                int randomIndex = random.nextInt(goedzo_geluidjes.length);
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), getResources().getIdentifier(goedzo_geluidjes[randomIndex], "raw", getPackageName()));
+                mediaPlayer.start();
+
             } else {
-                totaalScore++;
                 clickedFlipView.flipTheView();
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bijna_goed_nog_eens);
+                mediaPlayer.start();
             }
             clicked = false;
         }
