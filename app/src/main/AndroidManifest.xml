@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.thomasmore.flinkspreken">
 
+    <uses-sdk android:minSdkVersion="15"/>
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
