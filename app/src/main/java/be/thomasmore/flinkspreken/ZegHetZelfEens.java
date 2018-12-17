@@ -164,6 +164,11 @@ public class ZegHetZelfEens extends AppCompatActivity {
     public void flipViewClicked(EasyFlipView easyFlipView) {
         clicked = true;
         clickedFlipView = easyFlipView;
+
+        String woord = easyFlipView.getChildAt(1).getTag().toString();
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), getResources().getIdentifier(woord, "raw", getPackageName()));
+        mediaPlayer.start();
+
         easyFlipView.flipTheView();
     }
 
