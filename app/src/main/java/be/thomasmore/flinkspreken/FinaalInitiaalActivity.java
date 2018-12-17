@@ -25,6 +25,7 @@ public class FinaalInitiaalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finaal_initiaal);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Finaal of Initaal?");
 
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");
