@@ -37,7 +37,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_1_flip1_back"
@@ -60,7 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_1_flip2_back"
@@ -82,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_1_flip3_back"
@@ -115,7 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_2_flip1_back"
@@ -138,7 +138,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_2_flip2_back"
@@ -160,7 +160,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_2_flip3_back"
@@ -192,7 +192,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_3_flip1_back"
@@ -215,7 +215,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_3_flip2_back"
@@ -237,7 +237,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/tekeningkoe" />
+                        android:src="@drawable/varken" />
 
                     <ImageView
                         android:id="@+id/rij_3_flip3_back"

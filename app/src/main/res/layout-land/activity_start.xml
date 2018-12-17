@@ -65,7 +65,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/tekeningkoe" />
+            android:src="@drawable/koe" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
