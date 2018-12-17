@@ -25,6 +25,7 @@ public class FrontStopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_front_stop);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Fronting of stopping?");
 
         Bundle bundle = getIntent().getExtras();
         accountId = bundle.getLong("id");

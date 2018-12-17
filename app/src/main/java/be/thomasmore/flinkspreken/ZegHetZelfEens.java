@@ -52,6 +52,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zeg_het_zelf_eens);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Zeg het zelf eens!");
 
         Bundle bundle = getIntent().getExtras();
         accountId = bundle.getLong("id");

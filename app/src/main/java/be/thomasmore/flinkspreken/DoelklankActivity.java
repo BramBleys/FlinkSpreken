@@ -33,6 +33,7 @@ public class DoelklankActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doelklank);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Kies je doelklank");
 
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");

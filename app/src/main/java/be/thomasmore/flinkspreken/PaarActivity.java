@@ -31,6 +31,7 @@ public class PaarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Kies je paar");
 
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");
