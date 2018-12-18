@@ -8,8 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/hond-bot"
@@ -17,19 +16,25 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:orientation="horizontal">
 
             <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/hond2" />
+
+            <ImageView
                 android:id="@+id/bot"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="100dp"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="160dp"
                 android:onClick="onClickButtonBot"
                 android:src="@drawable/bot" />
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:src="@drawable/hond" />
         </LinearLayout>
 
@@ -38,26 +43,27 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/hond-bot"
             android:layout_marginTop="100dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
 
             <ImageView
                 android:id="@+id/tekening1"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_marginRight="50dp" />
 
             <ImageView
                 android:id="@+id/tekening2"
-                android:layout_width="150dp"
-                android:layout_height="150dp" />
+                android:layout_width="200dp"
+                android:layout_height="200dp" />
         </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Opslaan"
+            android:layout_alignParentBottom="true"
             android:onClick="onClickButtonOpslaan"
-            android:layout_alignParentBottom="true"/>
+            android:text="Opslaan" />
 
     </RelativeLayout>
 
