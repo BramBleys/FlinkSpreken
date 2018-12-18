@@ -24,7 +24,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="@string/kies_account"
-            android:textSize="40dp" />
+            android:textSize="70dp"
+            android:fontFamily="@font/smarc_font"/>
 
         <ListView
             android:id="@+id/accounts"

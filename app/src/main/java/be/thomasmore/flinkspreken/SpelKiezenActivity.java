@@ -2,6 +2,7 @@ package be.thomasmore.flinkspreken;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v7.app.AlertDialog;
@@ -29,7 +30,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spel_kiezen);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Kies een spel!");
+        getSupportActionBar().setTitle("Kies een spel");
 
         Bundle bundle = getIntent().getExtras();
         frontstop = bundle.getString("frontstop");
@@ -48,6 +49,8 @@ public class SpelKiezenActivity extends AppCompatActivity {
         LinearLayout second_layout = (LinearLayout) viewInflater.findViewById(R.id.second_layout);
         LinearLayout third_layout = (LinearLayout) viewInflater.findViewById(R.id.third_layout);
 
+        Typeface typeface = getResources().getFont(R.font.opensans_regular);
+
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -59,23 +62,32 @@ public class SpelKiezenActivity extends AppCompatActivity {
         TextView first_title = new TextView(this);
         first_title.setText(R.string.luistergoed);
         first_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+        first_title.setTypeface(typeface);
 
         TextView first_text = new TextView(this);
         first_text.setText(R.string.info_text_luistergoed);
+        first_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        first_text.setTypeface(typeface);
 
         TextView second_title = new TextView(this);
         second_title.setText(R.string.zeghetzelfeens);
         second_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+        second_title.setTypeface(typeface);
 
         TextView second_text = new TextView(this);
         second_text.setText(R.string.info_text_zeghetzelfeens);
+        second_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        second_text.setTypeface(typeface);
 
         TextView third_title = new TextView(this);
         third_title.setText(R.string.hondjewaf);
         third_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+        third_title.setTypeface(typeface);
 
         TextView third_text = new TextView(this);
         third_text.setText(R.string.info_text_hondjewaf);
+        third_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        third_text.setTypeface(typeface);
 
         first_title.setLayoutParams(layoutParams);
         first_text.setLayoutParams(layoutParams);
@@ -102,7 +114,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void onClickButtonLuisterGoed(View view){
+    public void onClickButtonLuisterGoed(View view) {
         Bundle bundle = new Bundle();
         bundle.putString("finaalinitiaal", finaalinitiaal);
         bundle.putString("klank", klank);
@@ -114,7 +126,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
     }
 
 
-    public void onClickButtonZegHetZelfEens(View view){
+    public void onClickButtonZegHetZelfEens(View view) {
         Bundle bundle = new Bundle();
         bundle.putLong("id", accountId);
         bundle.putString("paar", paar);
@@ -125,7 +137,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickButtonHondjeWaf(View v){
+    public void onClickButtonHondjeWaf(View v) {
         Bundle bundle = new Bundle();
         bundle.putLong("id", accountId);
         bundle.putString("paar", paar);

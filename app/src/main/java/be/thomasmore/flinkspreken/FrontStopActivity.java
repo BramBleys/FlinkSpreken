@@ -2,6 +2,7 @@ package be.thomasmore.flinkspreken;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ public class FrontStopActivity extends AppCompatActivity {
         LinearLayout first_layout = (LinearLayout) viewInflater.findViewById(R.id.first_layout);
         LinearLayout second_layout = (LinearLayout) viewInflater.findViewById(R.id.second_layout);
 
+        Typeface typeface = getResources().getFont(R.font.opensans_regular);
+
         LayoutParams layoutParams = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -50,17 +53,23 @@ public class FrontStopActivity extends AppCompatActivity {
         TextView first_title = new TextView(this);
         first_title.setText(R.string.fronting);
         first_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+        first_title.setTypeface(typeface);
 
         TextView first_text = new TextView(this);
         first_text.setText(R.string.info_text_fronting);
-
+        first_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        first_text.setTypeface(typeface);
 
         TextView second_title = new TextView(this);
         second_title.setText(R.string.stopping);
         second_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+        second_title.setTypeface(typeface);
 
         TextView second_text = new TextView(this);
         second_text.setText(R.string.info_text_stopping);
+        second_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        second_text.setTypeface(typeface);
+
 
         first_title.setLayoutParams(layoutParams);
         first_text.setLayoutParams(layoutParams);
@@ -71,7 +80,6 @@ public class FrontStopActivity extends AppCompatActivity {
         first_layout.addView(first_text);
         second_layout.addView(second_title);
         second_layout.addView(second_text);
-
 
         builder.setTitle(R.string.info_popup_title)
                 .setIcon(R.drawable.info_icon)
