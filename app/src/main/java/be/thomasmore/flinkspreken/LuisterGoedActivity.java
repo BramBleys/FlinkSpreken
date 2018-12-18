@@ -29,7 +29,7 @@ public class LuisterGoedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_luister_goed);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Luister goed!");
+        getSupportActionBar().setTitle("Luister goed");
 
         Bundle bundle = getIntent().getExtras();
         finaalinitiaal = bundle.getString("finaalinitiaal");

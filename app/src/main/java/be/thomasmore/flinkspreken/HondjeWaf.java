@@ -47,7 +47,7 @@ public class HondjeWaf extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hondje_waf);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Hondje waf!");
+        getSupportActionBar().setTitle("Hondje waf");
 
         Bundle bundle = getIntent().getExtras();
         paar = bundle.getString("paar");
