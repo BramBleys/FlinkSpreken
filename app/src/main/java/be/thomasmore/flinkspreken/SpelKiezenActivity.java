@@ -44,6 +44,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
 
+
         final View viewInflater = inflater.inflate(R.layout.info_popup, null);
         LinearLayout first_layout = (LinearLayout) viewInflater.findViewById(R.id.first_layout);
         LinearLayout second_layout = (LinearLayout) viewInflater.findViewById(R.id.second_layout);
