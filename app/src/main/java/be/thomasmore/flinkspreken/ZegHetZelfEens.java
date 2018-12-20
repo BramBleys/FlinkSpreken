@@ -18,11 +18,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wajahatkarim3.easyflipview.EasyFlipView;
-
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ZegHetZelfEens extends AppCompatActivity {
@@ -63,11 +63,18 @@ public class ZegHetZelfEens extends AppCompatActivity {
         db = new DatabaseHelper(this);
         mediaPlayer = new MediaPlayer();
 
+        if (savedInstanceState != null) {
+            clicked = savedInstanceState.getBoolean("clicked");
+            totaalScore = savedInstanceState.getInt("totaalScore");
+            behaaldeScore = savedInstanceState.getInt("behaaldeScore");
+            clickedFlipView = (EasyFlipView) savedInstanceState.getSerializable("clickedFlipView");
+            flipViews = (EasyFlipView[]) savedInstanceState.getSerializable("flipviews");
+        }
+
         setImages();
     }
 
     public void setImages() {
-
         ImageView tekening1 = (ImageView) findViewById(R.id.tekening1);
         ImageView tekening2 = (ImageView) findViewById(R.id.tekening2);
 
@@ -82,7 +89,6 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 checkJuist((ImageView) v);
             }
         });
-
         tekening2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 checkJuist((ImageView) v);
@@ -93,44 +99,68 @@ public class ZegHetZelfEens extends AppCompatActivity {
         int k = 0;
         LinearLayout mainlayout = (LinearLayout) findViewById(R.id.main_layout);
 
-        for (int i = 0; i < mainlayout.getChildCount(); i++) {
-            LinearLayout sublayout = (LinearLayout) findViewById(getResources().getIdentifier("rij_" + (i + 1), "id", getPackageName()));
+        if (flipViews[0] == null) {
+            for (int i = 0; i < mainlayout.getChildCount(); i++) {
+                LinearLayout sublayout = (LinearLayout) findViewById(getResources().getIdentifier("rij_" + (i + 1), "id", getPackageName()));
 
-            for (int j = 0; j < sublayout.getChildCount(); j++) {
-                EasyFlipView flipview = findViewById(getResources().getIdentifier("rij_" + (i + 1) + "_flip" + (j + 1), "id", getPackageName()));
+                for (int j = 0; j < sublayout.getChildCount(); j++) {
+                    EasyFlipView flipview = findViewById(getResources().getIdentifier("rij_" + (i + 1) + "_flip" + (j + 1), "id", getPackageName()));
 
-                ImageView imageView =
-                        (ImageView) flipview.findViewById(getResources().getIdentifier("rij_" + (i + 1) + "_flip" + (j + 1) + "_back", "id", getPackageName()));
+                    ImageView imageView =
+                            (ImageView) flipview.findViewById(getResources().getIdentifier("rij_" + (i + 1) + "_flip" + (j + 1) + "_back", "id", getPackageName()));
 
-                imageSwitcher = r.nextInt(2);
-                if ((imageSwitcher % 2) == 0 && image0 <= 4) {
-                    imageView.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
-                    imageView.setTag(woorden[0].toLowerCase());
-                    image0++;
-                } else {
-                    if ((imageSwitcher % 2) == 1 && image1 <= 4) {
-                        imageView.setImageResource(getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()));
-                        imageView.setTag(woorden[1].toLowerCase());
-                        image1++;
-                    } else {
+                    imageSwitcher = r.nextInt(2);
+                    if ((imageSwitcher % 2) == 0 && image0 <= 4) {
                         imageView.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
                         imageView.setTag(woorden[0].toLowerCase());
                         image0++;
-                    }
-                }
-
-                flipview.flipTheView();
-
-                flipview.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        if (!clicked) {
-                            flipViewClicked((EasyFlipView) v);
+                    } else {
+                        if ((imageSwitcher % 2) == 1 && image1 <= 4) {
+                            imageView.setImageResource(getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()));
+                            imageView.setTag(woorden[1].toLowerCase());
+                            image1++;
+                        } else {
+                            imageView.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
+                            imageView.setTag(woorden[0].toLowerCase());
+                            image0++;
                         }
                     }
-                });
 
-                flipViews[k] = flipview;
-                k++;
+                    flipview.flipTheView();
+
+                    flipview.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            if (!clicked) {
+                                flipViewClicked((EasyFlipView) v);
+                            }
+                        }
+                    });
+
+                    flipViews[k] = flipview;
+                    k++;
+                }
+            }
+        } else {
+            for (int i = 0; i < mainlayout.getChildCount(); i++) {
+                LinearLayout sublayout = (LinearLayout) findViewById(getResources().getIdentifier("rij_" + (i + 1), "id", getPackageName()));
+
+                for (int j = 0; j < sublayout.getChildCount(); j++) {
+                    EasyFlipView flipview = findViewById(getResources().getIdentifier("rij_" + (i + 1) + "_flip" + (j + 1), "id", getPackageName()));
+                    ViewGroup parent = (ViewGroup) flipview.getParent();
+                    int index = parent.indexOfChild(flipview);
+                    parent.removeView(flipview);
+                    parent.addView(flipViews[k], index);
+
+                    flipview.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            if (!clicked) {
+                                flipViewClicked((EasyFlipView) v);
+                            }
+                        }
+                    });
+
+                    k++;
+                }
             }
         }
     }
@@ -241,6 +271,17 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("clicked", clicked);
+        outState.putInt("totaalScore", totaalScore);
+        outState.putInt("behaaldeScore", behaaldeScore);
+        outState.putSerializable("clickedFlipView", clickedFlipView);
+        outState.putSerializable("flipviews", flipViews);
+
+        super.onSaveInstanceState(outState);
     }
 }
 
