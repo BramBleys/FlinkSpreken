@@ -60,6 +60,13 @@ public class HondjeWaf extends AppCompatActivity {
 
         startTimer();
         setImages();
+
+        if(savedInstanceState != null){
+            clicked = savedInstanceState.getBoolean("clicked");
+            totaalScore = savedInstanceState.getInt("totaalScore");
+            behaaldeScore = savedInstanceState.getInt("behaaldeScore");
+            antwoord = savedInstanceState.getString("antwoord");
+        }
     }
 
     public void onClickButtonBot(View v) {
@@ -83,9 +90,6 @@ public class HondjeWaf extends AppCompatActivity {
 
             if (tag.equals(antwoord)) {
                 behaaldeScore++;
-
-                Random random = new Random();
-                int randomIndex = random.nextInt(goedzo_geluidjes.length);
 
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bark);
                 mediaPlayer.start();
@@ -220,5 +224,15 @@ public class HondjeWaf extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        outState.putBoolean("clicked", clicked);
+        outState.putInt("totaalScore", totaalScore);
+        outState.putInt("behaaldeScore", behaaldeScore);
+        outState.putString("antwoord", antwoord);
+
+        super.onSaveInstanceState(outState);
     }
 }
