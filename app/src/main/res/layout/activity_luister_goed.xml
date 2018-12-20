@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="55dp"
             android:onClick="playAudio"
-            android:src="@drawable/ear" />
+            android:src="@drawable/oor" />
 
         <ImageView
             android:id="@+id/headset_image"
