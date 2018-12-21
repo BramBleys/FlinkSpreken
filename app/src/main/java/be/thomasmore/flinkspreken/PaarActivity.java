@@ -1,6 +1,7 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,6 +50,7 @@ public class PaarActivity extends AppCompatActivity {
         List<Integer> previousNumbers = new ArrayList<Integer>();
         Random random = new Random();
         int index;
+        Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(), "comic_bold.ttf");
 
         for (int i = 0; i < paren.size(); i++) {
             Button button = new Button(this);
@@ -74,6 +76,7 @@ public class PaarActivity extends AppCompatActivity {
             button.setGravity(Gravity.CENTER);
             button.setBackgroundResource(ids.get(index));
             button.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics()));
+            button.setTypeface(typeface);
 
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
