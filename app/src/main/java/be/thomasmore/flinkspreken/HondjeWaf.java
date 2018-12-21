@@ -20,8 +20,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
@@ -115,10 +117,11 @@ public class HondjeWaf extends AppCompatActivity {
     private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        String dateTime = LocalDateTime.now().format(formatter);
 
-        db.insertScore(score, accountId, spel, dateTime, paar.getId());
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String date = df.format(Calendar.getInstance().getTime());
+
+        db.insertScore(score, accountId, spel, date, paar.getId());
 
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
     }
