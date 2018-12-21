@@ -51,7 +51,7 @@ public class LuisterGoedActivity extends AppCompatActivity {
             Animation vibrateAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
             headsetImage.startAnimation(vibrateAnimation);
 
-            Toast.makeText(getBaseContext(), "Plug je headset in!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Plug je headset in!", Toast.LENGTH_LONG).show();
         }
     }
 
