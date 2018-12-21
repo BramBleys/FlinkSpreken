@@ -1,6 +1,9 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
@@ -21,8 +24,11 @@ import android.widget.Toast;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 public class ZegHetZelfEens extends AppCompatActivity {
@@ -71,8 +77,11 @@ public class ZegHetZelfEens extends AppCompatActivity {
         ImageView tekening1 = (ImageView) findViewById(R.id.tekening1);
         ImageView tekening2 = (ImageView) findViewById(R.id.tekening2);
 
-        tekening1.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
-        tekening2.setImageResource(getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()));
+//        tekening1.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
+//        tekening2.setImageResource(getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()));
+
+        tekening1.setImageBitmap(decodeSampledBitmapFromResource(getResources(), getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()), 200, 200));
+        tekening2.setImageBitmap(decodeSampledBitmapFromResource(getResources(), getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()), 200, 200));
 
         tekening1.setTag(woorden[0].toLowerCase());
         tekening2.setTag(woorden[1].toLowerCase());
@@ -104,16 +113,16 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
                 imageSwitcher = r.nextInt(2);
                 if ((imageSwitcher % 2) == 0 && image0 <= 4) {
-                    imageView.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
+                    imageView.setImageBitmap(decodeSampledBitmapFromResource(getResources(), getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()), 200, 200));
                     imageView.setTag(woorden[0].toLowerCase());
                     image0++;
                 } else {
                     if ((imageSwitcher % 2) == 1 && image1 <= 4) {
-                        imageView.setImageResource(getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()));
+                        imageView.setImageBitmap(decodeSampledBitmapFromResource(getResources(), getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()), 200, 200));
                         imageView.setTag(woorden[1].toLowerCase());
                         image1++;
                     } else {
-                        imageView.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
+                        imageView.setImageBitmap(decodeSampledBitmapFromResource(getResources(), getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()), 200, 200));
                         imageView.setTag(woorden[0].toLowerCase());
                         image0++;
                     }
@@ -133,6 +142,38 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 k++;
             }
         }
+    }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
     }
 
     public void checkJuist(ImageView v) {
@@ -181,10 +222,11 @@ public class ZegHetZelfEens extends AppCompatActivity {
     private void opslaan() {
         String score = behaaldeScore + "/" + totaalScore;
         Paar paar = db.getPaar(this.paar.toLowerCase());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        String dateTime = LocalDateTime.now().format(formatter);
 
-        db.insertScore(score, accountId, spel, dateTime, paar.getId());
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String date = df.format(Calendar.getInstance().getTime());
+
+        db.insertScore(score, accountId, spel, date, paar.getId());
 
         Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
     }

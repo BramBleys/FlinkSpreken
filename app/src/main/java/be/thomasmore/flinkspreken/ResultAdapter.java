@@ -1,6 +1,7 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ public class ResultAdapter extends ArrayAdapter<Score> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.resultlistviewitem, parent, false);
 
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "opensans_regular.ttf");
+
         final TextView textViewPaar = (TextView) rowView.findViewById(R.id.paar_textview);
         final TextView textViewScore = (TextView) rowView.findViewById(R.id.score_textview);
         final TextView textViewSpel = (TextView) rowView.findViewById(R.id.score_spel);
@@ -37,6 +40,11 @@ public class ResultAdapter extends ArrayAdapter<Score> {
         String score_string = values.get(position).getScore();
         String spel = values.get(position).getSpel();
         String datum = values.get(position).getDatum();
+
+        textViewPaar.setTypeface(typeface);
+        textViewScore.setTypeface(typeface);
+        textViewSpel.setTypeface(typeface);
+        textViewDatum.setTypeface(typeface);
 
         textViewPaar.setText(paar_naam);
         textViewScore.setText(score_string);

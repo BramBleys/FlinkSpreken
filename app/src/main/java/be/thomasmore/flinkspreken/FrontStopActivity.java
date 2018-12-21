@@ -40,7 +40,7 @@ public class FrontStopActivity extends AppCompatActivity {
         LinearLayout first_layout = (LinearLayout) viewInflater.findViewById(R.id.first_layout);
         LinearLayout second_layout = (LinearLayout) viewInflater.findViewById(R.id.second_layout);
 
-        Typeface typeface = getResources().getFont(R.font.opensans_regular);
+        Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(), "opensans_regular.ttf");
 
         LayoutParams layoutParams = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -69,7 +69,6 @@ public class FrontStopActivity extends AppCompatActivity {
         second_text.setText(R.string.info_text_stopping);
         second_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         second_text.setTypeface(typeface);
-
 
         first_title.setLayoutParams(layoutParams);
         first_text.setLayoutParams(layoutParams);

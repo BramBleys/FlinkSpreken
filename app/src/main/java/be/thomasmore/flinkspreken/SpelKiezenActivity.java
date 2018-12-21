@@ -50,7 +50,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
         LinearLayout second_layout = (LinearLayout) viewInflater.findViewById(R.id.second_layout);
         LinearLayout third_layout = (LinearLayout) viewInflater.findViewById(R.id.third_layout);
 
-        Typeface typeface = getResources().getFont(R.font.opensans_regular);
+        Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(), "opensans_regular.ttf");
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
