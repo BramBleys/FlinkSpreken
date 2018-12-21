@@ -41,7 +41,7 @@ public class FinaalInitiaalActivity extends AppCompatActivity {
         LinearLayout first_layout = (LinearLayout) viewInflater.findViewById(R.id.first_layout);
         LinearLayout second_layout = (LinearLayout) viewInflater.findViewById(R.id.second_layout);
 
-        Typeface typeface = getResources().getFont(R.font.opensans_regular);
+        Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(), "opensans_regular.ttf");
 
         LayoutParams layoutParams = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
