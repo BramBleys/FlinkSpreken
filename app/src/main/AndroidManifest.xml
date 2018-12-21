@@ -10,25 +10,47 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartActivity" />
-        <activity android:name=".FrontStopActivity" />
-        <activity android:name=".NewAccount" />
-        <activity android:name=".ResultsActivity" />
-        <activity android:name=".FinaalInitiaalActivity" />
-        <activity android:name=".DoelklankActivity" />
-        <activity android:name=".LuisterGoedActivity" />
-        <activity android:name=".ZegHetZelfEensActivity" />
-        <activity android:name=".SpelKiezenActivity" />
-        <activity android:name=".ZegHetZelfEens" />
-        <activity android:name=".PaarActivity" />
-        <activity android:name=".HondjeWaf" />
+        <activity
+            android:name=".StartActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".FrontStopActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".NewAccount"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ResultsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".FinaalInitiaalActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".DoelklankActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LuisterGoedActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SpelKiezenActivity" />
+        <activity
+            android:name=".ZegHetZelfEens"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PaarActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".HondjeWaf"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
