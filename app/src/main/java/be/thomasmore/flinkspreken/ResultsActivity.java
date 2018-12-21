@@ -30,7 +30,7 @@ public class ResultsActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         scores = (List<Score>) bundle.getSerializable("scores");
 
-        ResultAdapter adapter = new ResultAdapter(getApplicationContext(), scores);
+        ResultAdapter adapter = new ResultAdapter(this, scores);
         final ListView listViewScores = (ListView) findViewById(R.id.listview_scores);
 
         listViewScores.setAdapter(adapter);
