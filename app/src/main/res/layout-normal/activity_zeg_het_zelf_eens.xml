@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="be.thomasmore.flinkspreken.ZegHetZelfEens">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/main_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/rij_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:orientation="horizontal">
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_1_flip1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="21dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_1_flip1_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_1_flip2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="21dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_1_flip2_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_1_flip3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_1_flip3_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rij_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:orientation="horizontal">
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_2_flip1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="21dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_2_flip1_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_2_flip2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="21dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_2_flip2_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_2_flip3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_2_flip3_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rij_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:orientation="horizontal">
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_3_flip1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="21dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_3_flip1_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_3_flip2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="21dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_3_flip2_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/rij_3_flip3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipOnTouch="false">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/varken" />
+
+                    <ImageView
+                        android:id="@+id/rij_3_flip3_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/tekening1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginRight="50dp" />
+
+            <ImageView
+                android:id="@+id/tekening2"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:onClick="onClickButtonOpslaan"
+            android:text="Opslaan" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
