@@ -1,10 +1,12 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -38,6 +40,11 @@ public class LuisterGoedActivity extends AppCompatActivity {
 
         mediaPlayer = new MediaPlayer();
         setMediaPlayer();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(getBaseContext(), "Het spel is afgelopen !", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void playAudio(View v) {
