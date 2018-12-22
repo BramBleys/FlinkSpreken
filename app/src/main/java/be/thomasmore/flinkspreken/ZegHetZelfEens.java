@@ -1,6 +1,7 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -136,8 +137,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
         }
     }
 
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int height = options.outHeight;
         final int width = options.outWidth;
         int inSampleSize = 1;
@@ -156,8 +156,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
         return inSampleSize;
     }
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
 
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
@@ -213,21 +212,18 @@ public class ZegHetZelfEens extends AppCompatActivity {
         easyFlipView.flipTheView();
     }
 
-    public void onClickButtonOpslaan(View v) {
-        opslaan();
-        finish();
-    }
-
     private void opslaan() {
-        String score = behaaldeScore + "/" + totaalScore;
-        Paar paar = db.getPaar(this.paar.toLowerCase());
+        if (totaalScore != 0) {
+            String score = behaaldeScore + "/" + totaalScore;
+            Paar paar = db.getPaar(this.paar.toLowerCase());
 
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        String date = df.format(Calendar.getInstance().getTime());
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            String date = df.format(Calendar.getInstance().getTime());
 
-        db.insertScore(score, accountId, spel, date, paar.getId());
+            db.insertScore(score, accountId, spel, date, paar.getId());
 
-        Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void showAlert() {
@@ -269,19 +265,26 @@ public class ZegHetZelfEens extends AppCompatActivity {
         showAlert();
     }
 
-    //Back button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opslaan, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.opslaan_menu_item:
+                this.opslaan();
+                finish();
+                return true;
             case android.R.id.home:
-                showAlert();
+                finish();
+                return true;
+            default:
+                return false;
         }
 
-        return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
     }
 }
 
