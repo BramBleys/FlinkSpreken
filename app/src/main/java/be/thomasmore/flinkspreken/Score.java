@@ -1,7 +1,6 @@
 package be.thomasmore.flinkspreken;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class Score implements Serializable {
     private long id;

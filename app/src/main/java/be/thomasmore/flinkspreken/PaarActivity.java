@@ -2,9 +2,8 @@ package be.thomasmore.flinkspreken;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
