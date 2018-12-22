@@ -58,7 +58,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/luistergoed"
-            android:src="@drawable/oor" />
+            android:src="@drawable/oor"/>
 
         <TextView
             android:id="@+id/zeghetzelfeens"
