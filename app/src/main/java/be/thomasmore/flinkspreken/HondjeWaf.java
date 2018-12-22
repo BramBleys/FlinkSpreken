@@ -66,7 +66,7 @@ public class HondjeWaf extends AppCompatActivity {
         startTimer();
         setImages();
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             clicked = savedInstanceState.getBoolean("clicked");
             totaalScore = savedInstanceState.getInt("totaalScore");
             behaaldeScore = savedInstanceState.getInt("behaaldeScore");
@@ -109,21 +109,18 @@ public class HondjeWaf extends AppCompatActivity {
         }
     }
 
-    public void onClickButtonOpslaan(View v) {
-        opslaan();
-        finish();
-    }
-
     private void opslaan() {
-        String score = behaaldeScore + "/" + totaalScore;
-        Paar paar = db.getPaar(this.paar.toLowerCase());
+        if (totaalScore != 0) {
+            String score = behaaldeScore + "/" + totaalScore;
+            Paar paar = db.getPaar(this.paar.toLowerCase());
 
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        String date = df.format(Calendar.getInstance().getTime());
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            String date = df.format(Calendar.getInstance().getTime());
 
-        db.insertScore(score, accountId, spel, date, paar.getId());
+            db.insertScore(score, accountId, spel, date, paar.getId());
 
-        Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Opslaan gelukt!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void showAlert() {
@@ -249,23 +246,30 @@ public class HondjeWaf extends AppCompatActivity {
         showAlert();
     }
 
-    //Back button
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                showAlert();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opslaan, menu);
         return true;
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.opslaan_menu_item:
+                this.opslaan();
+                finish();
+                return true;
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return false;
+        }
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
         outState.putBoolean("clicked", clicked);
         outState.putInt("totaalScore", totaalScore);
         outState.putInt("behaaldeScore", behaaldeScore);
