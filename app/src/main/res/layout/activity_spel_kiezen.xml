@@ -45,71 +45,47 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@drawable/button_green"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/oor_small"
             android:onClick="onClickButtonLuisterGoed"
-            android:text="@string/luistergoed"
-            android:textSize="20sp"/>
-
-        <ImageView
-            android:id="@+id/luistergoed_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/luistergoed"
-            android:src="@drawable/oor" />
-
-        <TextView
-            android:id="@+id/zeghetzelfeens"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/luistergoed"
-            android:background="@drawable/button_blauw"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:layout_marginTop="15dp"
-            android:onClick="onClickButtonZegHetZelfEens"
-            android:text="@string/zeghetzelfeens"
-            android:textSize="20sp"/>
-
-        <ImageView
-            android:id="@+id/zeghetzelfeens_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/luistergoed_icon"
-            android:layout_marginTop="15dp"
-            android:layout_toRightOf="@+id/zeghetzelfeens"
-            android:src="@drawable/varken" />
-
+            android:text="@string/luistergoed"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/hondjewaf"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@+id/zeghetzelfeens"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:background="@drawable/button_bruin"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/hond_small"
+            android:onClick="onClickButtonHondjeWaf"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:layout_marginTop="15dp"
-            android:onClick="onClickButtonHondjeWaf"
             android:text="@string/hondjewaf"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/hondjewaf_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <TextView
+            android:id="@+id/zeghetzelfeens"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/luistergoed"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/zeghetzelfeens_icon"
-            android:layout_marginTop="30dp"
-            android:layout_toRightOf="@+id/hondjewaf"
-            android:src="@drawable/hond" />
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_blauw"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/varken_small"
+            android:onClick="onClickButtonZegHetZelfEens"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/zeghetzelfeens"
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
