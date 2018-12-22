@@ -41,7 +41,8 @@
             android:name=".LuisterGoedActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SpelKiezenActivity" />
+            android:name=".SpelKiezenActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ZegHetZelfEens"
             android:screenOrientation="portrait"/>
