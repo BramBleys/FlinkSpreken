@@ -37,46 +37,54 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <Button
+        <TextView
             android:id="@+id/luistergoed"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@drawable/button_green"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/oor_small"
             android:onClick="onClickButtonLuisterGoed"
-            android:padding="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:text="@string/luistergoed"
             android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/zeghetzelfeens"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/luistergoed"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_blauw"
-            android:onClick="onClickButtonZegHetZelfEens"
-            android:padding="10dp"
-            android:text="@string/zeghetzelfeens"
-            android:textSize="20sp" />
-
-
-        <Button
+        <TextView
             android:id="@+id/hondjewaf"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/zeghetzelfeens"
+            android:layout_below="@+id/zeghetzelfeens"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/button_bruin"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/hond_small"
             android:onClick="onClickButtonHondjeWaf"
-            android:padding="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:text="@string/hondjewaf"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/zeghetzelfeens"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/luistergoed"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_blauw"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/varken_small"
+            android:onClick="onClickButtonZegHetZelfEens"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/zeghetzelfeens"
             android:textSize="20sp" />
 
 
