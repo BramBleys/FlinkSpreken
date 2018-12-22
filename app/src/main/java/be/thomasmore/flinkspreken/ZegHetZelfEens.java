@@ -5,20 +5,14 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wajahatkarim3.easyflipview.EasyFlipView;
@@ -43,6 +37,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
     EasyFlipView flipViews[] = new EasyFlipView[9];
     EasyFlipView clickedFlipView;
     private String[] woorden;
+
 
     private long accountId;
     private String paar;
@@ -76,9 +71,6 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
         ImageView tekening1 = (ImageView) findViewById(R.id.tekening1);
         ImageView tekening2 = (ImageView) findViewById(R.id.tekening2);
-
-//        tekening1.setImageResource(getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()));
-//        tekening2.setImageResource(getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()));
 
         tekening1.setImageBitmap(decodeSampledBitmapFromResource(getResources(), getResources().getIdentifier(woorden[0].toLowerCase(), "drawable", getPackageName()), 200, 200));
         tekening2.setImageBitmap(decodeSampledBitmapFromResource(getResources(), getResources().getIdentifier(woorden[1].toLowerCase(), "drawable", getPackageName()), 200, 200));
@@ -189,10 +181,17 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 ImageView view = (ImageView) clickedFlipView.getChildAt(1);
                 view.setImageResource(R.drawable.correct);
 
-                Random random = new Random();
-                int randomIndex = random.nextInt(goedzo_geluidjes.length);
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), getResources().getIdentifier(goedzo_geluidjes[randomIndex], "raw", getPackageName()));
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.correctanswerpling);
                 mediaPlayer.start();
+
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    public void onCompletion(MediaPlayer mp) {
+                        Random random = new Random();
+                        int randomIndex = random.nextInt(goedzo_geluidjes.length);
+                        mediaPlayer = MediaPlayer.create(getApplicationContext(), getResources().getIdentifier(goedzo_geluidjes[randomIndex], "raw", getPackageName()));
+                        mediaPlayer.start();
+                    }
+                });
 
             } else {
                 clickedFlipView.flipTheView();
