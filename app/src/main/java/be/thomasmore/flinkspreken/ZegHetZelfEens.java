@@ -278,6 +278,9 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 this.opslaan();
                 finish();
                 return true;
+            case R.id.instructie_menu_item:
+                //audio afspelen
+                return true;
             case android.R.id.home:
                 finish();
                 return true;

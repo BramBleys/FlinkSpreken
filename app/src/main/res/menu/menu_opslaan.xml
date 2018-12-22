@@ -6,4 +6,8 @@
     <item
         android:id="@+id/opslaan_menu_item"
         android:title="@string/opslaan" />
+
+    <item
+        android:id="@+id/instructie_menu_item"
+        android:title="@string/instructie" />
 </menu>
