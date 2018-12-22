@@ -278,6 +278,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 //audio afspelen
                 return true;
             case android.R.id.home:
+                showAlert();
                 finish();
                 return true;
             default:
