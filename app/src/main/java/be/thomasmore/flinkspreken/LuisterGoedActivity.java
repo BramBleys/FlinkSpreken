@@ -1,14 +1,10 @@
 package be.thomasmore.flinkspreken;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.media.AudioManager;
-import android.media.Image;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import java.time.Duration;
 
 public class LuisterGoedActivity extends AppCompatActivity {
 
