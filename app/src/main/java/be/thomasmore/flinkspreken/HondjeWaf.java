@@ -32,6 +32,7 @@ public class HondjeWaf extends AppCompatActivity {
     private TimerTask timerTask;
     private Handler handler = new Handler();
     private MediaPlayer mediaPlayer;
+    private MediaPlayer instructie;
     private DatabaseHelper db;
 
     private boolean clicked = false;
@@ -54,7 +55,11 @@ public class HondjeWaf extends AppCompatActivity {
 
         woorden = paar.split("-");
         mediaPlayer = new MediaPlayer();
+        instructie = new MediaPlayer();
         db = new DatabaseHelper(this);
+
+        instructie = MediaPlayer.create(getApplicationContext(), R.raw.spel2);
+        instructie.start();
 
         startTimer();
         setImages();
@@ -253,9 +258,14 @@ public class HondjeWaf extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.instructie_menu_item:
-                //audio afspelen
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+                instructie.start();
                 return true;
             case android.R.id.home:
+                mediaPlayer.stop();
+                instructie.stop();
                 showAlert();
                 return true;
             default:
