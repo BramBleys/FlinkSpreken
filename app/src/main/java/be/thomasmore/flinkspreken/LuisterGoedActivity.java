@@ -41,6 +41,9 @@ public class LuisterGoedActivity extends AppCompatActivity {
     }
 
     public void playAudio(View v) {
+        if (instructie.isPlaying()) {
+            instructie.stop();
+        }
         setMediaPlayer();
 
         AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -52,6 +55,7 @@ public class LuisterGoedActivity extends AppCompatActivity {
                         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.flink_geluisterd);
                         mediaPlayer.start();
                         Toast.makeText(getBaseContext(), "Het spel is afgelopen !", Toast.LENGTH_LONG).show();
+                        finish();
                     }
                 });
 

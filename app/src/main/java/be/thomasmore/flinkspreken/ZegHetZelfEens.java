@@ -168,11 +168,18 @@ public class ZegHetZelfEens extends AppCompatActivity {
     }
 
     public void checkJuist(ImageView v) {
+
         if (clicked) {
             totaalScore++;
 
             if (v.getTag().equals(clickedFlipView.getChildAt(1).getTag())) {
                 behaaldeScore++;
+
+                if (behaaldeScore == 9) {
+                    opslaan();
+                    finish();
+                    Toast.makeText(getBaseContext(), "Het spel is afgelopen !", Toast.LENGTH_LONG).show();
+                }
 
                 clickedFlipView.setFlipEnabled(false);
                 clickedFlipView.setOnClickListener(null);
