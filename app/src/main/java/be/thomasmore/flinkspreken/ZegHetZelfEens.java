@@ -35,7 +35,6 @@ public class ZegHetZelfEens extends AppCompatActivity {
     EasyFlipView clickedFlipView;
     private String[] woorden;
 
-
     private long accountId;
     private String paar;
     private String spel;
@@ -43,6 +42,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
     private String[] goedzo_geluidjes = new String[]{"bravo", "bravo2", "dikke_duim", "dikke_duim2", "goed_gedaan", "goedzo", "super_gedaan"};
     private MediaPlayer mediaPlayer;
+    private MediaPlayer instructie;
 
 
     @Override
@@ -60,6 +60,10 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         mediaPlayer = new MediaPlayer();
+        instructie = new MediaPlayer();
+
+        instructie = MediaPlayer.create(getApplicationContext(), R.raw.spel3);
+        instructie.start();
 
         setImages();
     }
@@ -275,9 +279,14 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.instructie_menu_item:
-                //audio afspelen
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+                instructie.start();
                 return true;
             case android.R.id.home:
+                mediaPlayer.stop();
+                instructie.stop();
                 showAlert();
                 return true;
             default:
