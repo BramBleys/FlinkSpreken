@@ -151,6 +151,10 @@ public class SpelKiezenActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.home_menu_item:
+                Intent intent = new Intent(getApplicationContext(), Intro.class);
+                startActivity(intent);
+                return true;
             case android.R.id.home:
                 finish();
                 return true;
@@ -160,6 +164,7 @@ public class SpelKiezenActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
