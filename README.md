@@ -1,6 +1,6 @@
 # FlinkSpreken
 This is an app that lets children of age 3-6 practise the pronunciation of certain words or sounds. 
-It will be used as a bachelor's thesis. The app is designed in dutch because it is specifically targeted at dutch children and dutch words. 
+It will be used as a bachelor's thesis. The app is designed <b>in dutch</b> because it is specifically targeted at dutch children and dutch words. 
 
 # Download
 You can download the APK here: 
