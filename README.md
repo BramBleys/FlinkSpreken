@@ -64,7 +64,7 @@ http://www.brambleys.be/apk/flinkspreken.apk
   </tr>
   <tr>
     <td>
-      The child presses a pig and gets to see an image. The child <br /> says out loud what it sees on the image. The parent presses <br /> the corresponding image. The child here's a sound or voice <br /> to know if he said the word right or wrong.
+      The child presses a pig and gets to see an image. The child <br /> says out loud what it sees on the image. The parent presses <br /> the corresponding image. The child hears a sound or voice <br /> to know if he said the word right or wrong.
       <br />
       <br />
       <img src="images_readme/zeg_het_zelf_eens.png" width="200"></td>
